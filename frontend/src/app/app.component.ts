@@ -24,7 +24,7 @@ import { ApiService } from './api.service';
     }
   `]
 })
-export class App implements OnInit {
+export class AppComponent implements OnInit {
   ready = false;
   resetKey = 0;
 

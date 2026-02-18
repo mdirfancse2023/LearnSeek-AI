@@ -1,6 +1,6 @@
-# 🎓 Smart Tutor AI – YouTube Playlist Q&A (RAG)
+# 🎓 LearnSeek AI – YouTube Playlist Q&A (RAG)
 
-Smart Tutor AI is a **local, playlist-based Question Answering system** that allows you to load a YouTube playlist and ask natural language questions about its content — similar to ChatGPT, but grounded strictly in your videos.
+LearnSeek AI is a **local, playlist-based Question Answering system** that allows you to load a YouTube playlist and ask natural language questions about its content — similar to ChatGPT, but grounded strictly in your videos.
 
 Everything runs **locally** using open-source tools.
 

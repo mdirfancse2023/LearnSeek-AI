@@ -17,7 +17,9 @@ def embed(texts):
     r.raise_for_status()
     return r.json()["embeddings"]
 
-def build_embeddings():
+def build_embeddings(status_info):
+    status_info["message"] = "Building embeddings..."
+
     with open(MAP_FILE) as f:
         video_map = json.load(f)
 
@@ -29,9 +31,12 @@ def build_embeddings():
         key=lambda x: int(x.split("_")[0])
     )
 
-    for file in files:
+    for idx, file in enumerate(files, start=1):
         video_no = file.split("_")[0]
         meta = video_map[video_no]
+
+        status_info["message"] = f"Embedding video {idx} of {len(files)}: {meta.get('title','')[:30]}..."
+        status_info.setdefault("log", []).append(f"Embedding video {idx}: {meta.get('title')}")
 
         with open(os.path.join(TRANS_DIR, file)) as f:
             data = json.load(f)
@@ -52,4 +57,5 @@ def build_embeddings():
             chunk_id += 1
 
     joblib.dump(pd.DataFrame(records), OUT_FILE)
+    status_info.setdefault("log", []).append("✅ Embeddings built and saved")
     print("✅ Embeddings built")

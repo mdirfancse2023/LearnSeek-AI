@@ -35,7 +35,7 @@ youtube-rag/
 │       ├── transcribe.py
 │       └── embed.py
 ├── frontend/
-│   └── (React chat UI)
+│   └── (Angular chat UI)
 └── data/
     ├── audios/
     │   ├── 1_video_title.mp3
@@ -65,7 +65,7 @@ youtube-rag/
 
 ### Frontend
 
-* React
+* Angular
 * Simple chat UI
 
 ---
@@ -193,7 +193,7 @@ npm start
 Frontend runs at:
 
 ```
-http://localhost:3000
+http://localhost:4200
 ```
 
 ---

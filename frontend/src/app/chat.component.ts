@@ -1,4 +1,4 @@
-import { Component, Input, OnChanges, SimpleChanges } from '@angular/core';
+import { Component, Input, OnChanges, SimpleChanges, ChangeDetectorRef } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { ApiService } from './api.service';
 
@@ -91,7 +91,7 @@ export class ChatComponent implements OnChanges {
   input = '';
   thinking = false;
 
-  constructor(private apiService: ApiService) {}
+  constructor(private apiService: ApiService, private cdr: ChangeDetectorRef) {}
 
   ngOnChanges(changes: SimpleChanges) {
     if (changes['resetKey']) {
@@ -108,15 +108,19 @@ export class ChatComponent implements OnChanges {
     const query = this.input;
     this.input = '';
     this.thinking = true;
+    this.cdr.detectChanges();
 
     try {
       const res = await this.apiService.askAI(query);
       this.messages.push({ role: 'ai', text: res.answer });
+      this.cdr.detectChanges();
     } catch (e) {
       console.error(e);
       this.messages.push({ role: 'ai', text: 'Error occurred' });
+      this.cdr.detectChanges();
     } finally {
       this.thinking = false;
+      this.cdr.detectChanges();
     }
   }
 }

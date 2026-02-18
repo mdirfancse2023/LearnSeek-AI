@@ -1,4 +1,4 @@
-import { Component, EventEmitter, Output, OnDestroy, ChangeDetectorRef } from '@angular/core';
+import { Component, EventEmitter, Output, OnDestroy, ChangeDetectorRef, Input } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { ApiService } from './api.service';
 
@@ -145,6 +145,7 @@ import { ApiService } from './api.service';
   `]
 })
 export class ToolbarComponent implements OnDestroy {
+  @Input() chatActive: boolean = false;
   url = '';
   status: string = 'idle';
   message: string = '';

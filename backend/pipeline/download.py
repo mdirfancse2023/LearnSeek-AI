@@ -44,6 +44,7 @@ def download_audio(playlist_url: str):
                 "--audio-format", "mp3",
                 "--download-sections", "*0-10",
                 "--force-keyframes-at-cuts",
+                "--extractor-args", "youtube:player_client=android",
                 "-o", out,
                 url
             ],

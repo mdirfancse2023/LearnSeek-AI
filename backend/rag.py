@@ -1,6 +1,8 @@
 import joblib
 import numpy as np
 import requests
+import json
+from typing import Generator
 from sklearn.metrics.pairwise import cosine_similarity
 
 JOBLIB_FILE = "data/chunks_with_embeddings.joblib"
